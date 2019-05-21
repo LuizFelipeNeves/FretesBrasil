@@ -8,12 +8,11 @@ import Error from 'next/error';
 import Pagination from "react-pagination-library";
 import "react-pagination-library/build/css/index.css"; //for css
 
-import AsyncSelect from 'react-select/lib/Async';
-
 import Layout from '../components/layout'
 import FretesList from '../components/fretesList'
 
-const URL = 'http://localhost:5000'
+const URL = 'https://fretesbrasil.herokuapp.com'
+
 export default class Fretes extends Component {
   constructor(props) {
     super(props)
@@ -22,23 +21,15 @@ export default class Fretes extends Component {
       totalPages: 1,
       data: [],
     }
-  }
-
-  componentDidMount() {
-    this.changeCurrentPage(this.state.currentPage)
-  }
+    this.changeCurrentPage((this.props.id || 1))
+  } 
 
   changeCurrentPage = page => {
-    const body = { page }
-    axios.post(URL + '/api/filtro/', body).then(resp => this.setState({
+    axios.post(URL + '/api/filtro/', { page }).then(resp => this.setState({
       currentPage: page,
       data: resp.data,
       totalPages: Math.ceil(resp.data.maxitens / resp.data.data.length)
     }))
-
-  SelectEstadoOrigem = estado => {
-    console.log(estado)
-  }
 };
 
   render () {
@@ -49,14 +40,13 @@ export default class Fretes extends Component {
             <h5>Encontre as melhores ofertas de Fretes</h5>
             <div className="form-row">
                 <div className="form-group-responsive sm-3 mr-2 mt-3">
-                    <select onChange={this.SelectEstadoOrigem} className="form-control" id="selectEstado">
+                    <select className="form-control" id="selectEstado">
                         <option>Estado de Origem</option>
                         <option>São Paulo</option>
-                        <option>Rio de Janeiro</option>
                     </select>
                 </div>
                 <div className="form-group sm-3 mr-5 mt-3">
-                    <select className="form-control" id="selectCidade">
+                    <select className="form-control" id="selectCidade" >
                         <option>Cidade de Origem</option>
                         <option>Araraquara</option>
                         <option>Araras</option>
