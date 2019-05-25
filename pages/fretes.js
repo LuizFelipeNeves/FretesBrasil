@@ -60,9 +60,6 @@ export default class Fretes extends Component {
       if (this.state.cidadeOrigem.value) body.cidadeorigem = this.state.cidadeOrigem.value;
       if (this.state.estadoDestino.value) body.estadodestino = this.state.estadoDestino.value;
       if (this.state.cidadeDestino.value) body.cidadedestino = this.state.cidadeDestino.value;
-
-      console.log(body)
-
       axios.post(BASE + '/api/filtro/', body).then(resp => this.setState({
         currentPage: page,
         data: resp.data,
