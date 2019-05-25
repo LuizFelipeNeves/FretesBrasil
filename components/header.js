@@ -37,13 +37,13 @@ export default class Header extends React.Component {
                 <NavLink href="/fretes">Fretes</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/sobre">Sobre</NavLink>
+                <NavLink disabled href="/sobre">Sobre</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/contato">Contato</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
+                <NavLink disabled href="/login">Login</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
