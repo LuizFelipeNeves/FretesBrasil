@@ -14,7 +14,7 @@ import { stringify } from "query-string";
 import Layout from '../components/layout'
 import FretesList from '../components/fretesList'
 
-const BASE = 'http://localhost:3000'
+const BASE = 'http://localhost:' + (process.env.PORT || 3000)
 
 const customStyles = {
   control: base => ({
