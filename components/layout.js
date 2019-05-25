@@ -4,10 +4,9 @@ import Header from './header'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/js/all'
-import '../estilo.css'
+import '../static/estilo.css'
 
-export default ({ children, titulo = 'FRETES BRASIL' }) => (
-  <div>
+export default ({ children, titulo = 'FRETES BRASIL' }) => (<div>
     <Head>
       <title>{titulo}</title>
       <meta charSet='utf-8' />
