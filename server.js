@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable no-nested-ternary */
 const cors = require('cors');
@@ -25,18 +26,13 @@ app.prepare().then(() => {
   server.use('/api', api); // api
 
   server.get('/', (req, res) => app.render(req, res, '/', req.query));
-
   server.get('/contato', (req, res) => app.render(req, res, '/contato', req.query));
-
-  server.get('/fretes/:id', (req, res) => {
-    return app.render(req, res, '/fretes', { id: req.params.id });
-  });
+  server.get('/fretes', (req, res) => app.render(req, res, '/fretes'));
 
   server.get('*', (req, res) => handle(req, res));
 
   server.listen(port, (err) => {
     if (err) throw err;
-    // eslint-disable-next-line no-console
     console.log(`> Ready on http://localhost:${port}`);
   });
 });
