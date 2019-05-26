@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
+const AutoIncrement = require('mongoose-sequence')(mongoose);
+
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
-
-const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const FreteSchema = new mongoose.Schema({
   _id: Number,
@@ -19,5 +19,5 @@ const FreteSchema = new mongoose.Schema({
   site: String,
 }, { _id: false, timestamps: { createdAt: 'created_at' } });
 
-FreteSchema.plugin(AutoIncrement);
+FreteSchema.plugin(AutoIncrement, { id: 'fretes', inc_field: '_id' });
 module.exports = mongoose.model('Frete', FreteSchema);

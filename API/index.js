@@ -1,5 +1,7 @@
 const express = require('express');
 const fretesRouter = require('./routes/fretesRouter');
+const authRouter = require('./routes/authRouter');
+const usuarioRouter = require('./routes/usuarioRouter');
 
 const api = express();
 
@@ -7,5 +9,7 @@ const api = express();
 // TODO: move all controllers in the src/api/controllers folder
 
 api.use('/fretes', fretesRouter);
+api.use('/auth', authRouter);
+api.use('', usuarioRouter);
 
 module.exports = api;

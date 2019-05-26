@@ -28,7 +28,6 @@ app.prepare().then(() => {
   server.get('/', (req, res) => app.render(req, res, '/', req.query));
   server.get('/contato', (req, res) => app.render(req, res, '/contato', req.query));
   server.get('/fretes', (req, res) => app.render(req, res, '/fretes'));
-
   server.get('*', (req, res) => handle(req, res));
 
   server.listen(port, (err) => {
