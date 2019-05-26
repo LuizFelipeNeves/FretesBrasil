@@ -21,7 +21,7 @@ yarn install
 ```
 
 ### Setting the environment
-Create a file with:
+Create a file in project folder with name .env and content:
 ```js
 BDCONFIG= Your mongodb link here with user and password.
 ```
