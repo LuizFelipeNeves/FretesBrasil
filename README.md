@@ -24,6 +24,7 @@ yarn install
 Create a file in project folder with name .env and content:
 ```js
 BDCONFIG= Your mongodb link here with user and password.
+SECRET= Magic word > jsonwebtoken
 ```
 ### How run?
 ```
