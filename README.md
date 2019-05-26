@@ -26,13 +26,13 @@ Create a file in project folder with name .env and content:
 BDCONFIG= Your mongodb link here with user and password.
 ```
 ### How run?
-Deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download))
-
-```bash
-now
-```
-or local:
 ```
 npm run dev
 ```
+
+Or deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download))
+```bash
+now
+```
+
 
