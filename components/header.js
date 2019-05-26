@@ -26,7 +26,7 @@ export default class Header extends React.Component {
     return (
         <Navbar color="dark" dark expand="lg">
         <Container>
-          <NavbarBrand className='h1 mb-0' href='' as="/"><i className="fab fa-mailchimp mr-1"/>FRETES BRASIL</NavbarBrand>
+          <NavbarBrand className='h1 mb-0' href='/' as="/"><i className="fab fa-mailchimp mr-1"/>FRETES BRASIL</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -37,10 +37,10 @@ export default class Header extends React.Component {
                 <NavLink href="/fretes">Fretes</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink disabled href="/sobre">Sobre</NavLink>
+                <NavLink disabled href="/#sobre">Sobre</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/contato">Contato</NavLink>
+                <NavLink href="/#contato">Contato</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink disabled href="/login">Login</NavLink>
