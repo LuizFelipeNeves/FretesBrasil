@@ -27,7 +27,7 @@ const customStyles = {
 
 export default class Fretes extends Component {
   state = {
-    currentPage: (this.props.id || 1),
+    currentPage: 1,
     totalPages: 1,
     data: [],
 
@@ -287,7 +287,7 @@ export default class Fretes extends Component {
   }
 
   componentDidMount() {
-    this.changeCurrentPage((this.props.id || 1))
+    this.changeCurrentPage(1)
     this.fetchEstadosO();
     this.fetchEstadosD();
     this.fetchVeiculos();
