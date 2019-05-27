@@ -10,6 +10,6 @@ const api = express();
 
 api.use('/fretes', fretesRouter);
 api.use('/auth', authRouter);
-api.use('', usuarioRouter);
+api.use('/admin', usuarioRouter);
 
 module.exports = api;
