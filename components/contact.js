@@ -33,7 +33,6 @@ export default class Contact extends Component {
         this.onChangeTelefone = this.onChangeTelefone.bind(this);   
         this.onChangeMSG = this.onChangeMSG.bind(this);
         this.enviarform = this.enviarform.bind(this);
-
     }
 
     enviarform(evt) {
@@ -102,7 +101,7 @@ export default class Contact extends Component {
                     <div className="form-row">
                         <div className="form-group col-sm-6">
                             <label htmlFor="inputNome">Nome</label>
-                            <input type="text" required="required" value={this.state.Nome} onChange={this.onChangeNome} className="form-control" id="inputNome" placeholder="Ex: João" pattern="[a-zA-Z\u00C0-\u00FF ]{1,}$" />
+                            <input type="text" required="required" value={Nome} onChange={this.onChangeNome} className="form-control" id="inputNome" placeholder="Ex: João" pattern="[a-zA-Z\u00C0-\u00FF ]{1,}$" />
                         </div>
                         <div className="form-group col-sm-6">
                             <label htmlFor="inputSobrenome">Sobrenome</label>
