@@ -33,23 +33,19 @@ export default class Contact extends Component {
         this.onChangeTelefone = this.onChangeTelefone.bind(this);   
         this.onChangeMSG = this.onChangeMSG.bind(this);
         this.enviarform = this.enviarform.bind(this);
+        this.clearContato = this.clearContato.bind(this);
 
     }
 
     enviarform(evt) {
         evt.preventDefault();
         console.log(this.state);
-
-        // form enviado >> reset
-        this.setState({
-            Nome: '',
-            Sobrenome: '',
-            Email: '',
-            Telefone: '',
-            Assunto: false,
-            Mensagem: '',
-        });
+        clearContato();
     };
+
+    clearContato() {
+        this.setState({ Nome: '', Sobrenome: '', Email: '', Telefone: '', Assunto: false, Mensagem: '', });
+    }
 
     onChangeNome(evt) {
         if (this.state.Nome !== evt.target.value) this.setState({ Nome: evt.target.value });
@@ -100,7 +96,7 @@ export default class Contact extends Component {
         </div>
         <div className="row justify-content-center mb-5">
             <div className="col-sm-12 col-md-10 col-lg-8">
-                <form onSubmit={this.enviarform}>
+                <form onSubmit={this.enviarform} onReset={this.clearContato}>
                     <div className="form-row">
                         <div className="form-group col-sm-6">
                             <label htmlFor="inputNome">Nome</label>
