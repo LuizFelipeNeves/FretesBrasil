@@ -33,19 +33,22 @@ export default class Contact extends Component {
         this.onChangeTelefone = this.onChangeTelefone.bind(this);   
         this.onChangeMSG = this.onChangeMSG.bind(this);
         this.enviarform = this.enviarform.bind(this);
+
     }
 
     enviarform(evt) {
         evt.preventDefault();
-        alert('Your nome: ' + this.state.Nome);
-        this.state = {
+        console.log(this.state);
+
+        // form enviado >> reset
+        this.setState({
             Nome: '',
             Sobrenome: '',
             Email: '',
             Telefone: '',
             Assunto: false,
             Mensagem: '',
-        };
+        });
     };
 
     onChangeNome(evt) {
