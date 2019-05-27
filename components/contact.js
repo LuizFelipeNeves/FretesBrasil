@@ -34,17 +34,16 @@ export default class Contact extends Component {
         this.onChangeMSG = this.onChangeMSG.bind(this);
         this.enviarform = this.enviarform.bind(this);
         this.clearContato = this.clearContato.bind(this);
-
     }
 
     enviarform(evt) {
         evt.preventDefault();
-        console.log(this.state);
+        console.log(this.state); // enviar para api ou email
         clearContato();
     };
 
     clearContato() {
-        this.setState({ Nome: '', Sobrenome: '', Email: '', Telefone: '', Assunto: false, Mensagem: '', });
+        this.setState({ Nome: '', Sobrenome: '', Email: '', Telefone: '', Assunto: false, Mensagem: '' });
     }
 
     onChangeNome(evt) {
