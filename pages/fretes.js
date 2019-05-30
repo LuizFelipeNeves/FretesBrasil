@@ -14,8 +14,6 @@ import { stringify } from "query-string";
 import Layout from '../components/layout'
 import FretesList from '../components/fretesList'
 
-const BASE = 'https://fretesbrasil.herokuapp.com'
-
 const customStyles = {
   control: base => ({
     ...base,
@@ -60,7 +58,7 @@ export default class Fretes extends Component {
       if (this.state.cidadeOrigem.value) body.cidadeorigem = this.state.cidadeOrigem.value;
       if (this.state.estadoDestino.value) body.estadodestino = this.state.estadoDestino.value;
       if (this.state.cidadeDestino.value) body.cidadedestino = this.state.cidadeDestino.value;
-      axios.post(BASE + '/api/fretes/filtro/', body).then(resp => this.setState({
+      axios.post('/api/fretes/filtro/', body).then(resp => this.setState({
         currentPage: page,
         data: resp.data,
         totalPages: Math.ceil(resp.data.maxitens / 20)
@@ -150,7 +148,7 @@ export default class Fretes extends Component {
     if (this.state.cidadeDestino.value)
       body.cidadedestino = this.state.cidadeDestino.value;
 
-    let URL = BASE + "/api/fretes/estadoso";
+    let URL = "/api/fretes/estadoso";
     if (stringify(body) !== "") URL += `?${stringify(body)}`;
     //console.log(URL);
 
@@ -176,7 +174,7 @@ export default class Fretes extends Component {
         body.cidadeorigem = this.state.cidadeOrigem.value;
     }
 
-    let URL = BASE + "/api/fretes/estadosd";
+    let URL = "/api/fretes/estadosd";
     if (stringify(body) !== "") URL += `?${stringify(body)}`;
     //console.log(URL);
 
@@ -203,7 +201,7 @@ export default class Fretes extends Component {
           body.cidadedestino = this.state.cidadeDestino.value;
       }
       body.estadoorigem = this.state.estadoOrigem.value;
-      let URL = BASE + "/api/fretes/cidadeo";
+      let URL = "/api/fretes/cidadeo";
       if (stringify(body) !== "") URL += `?${stringify(body)}`;
       //console.log(URL);
 
@@ -237,7 +235,7 @@ export default class Fretes extends Component {
           body.cidadeorigem = this.state.cidadeOrigem.value;
       }
       body.estadodestino = this.state.estadoDestino.value;
-      let URL = BASE + "/api/fretes/cidaded";
+      let URL = "/api/fretes/cidaded";
       if (stringify(body) !== "") URL += `?${stringify(body)}`;
       //console.log(URL);
 
@@ -275,7 +273,7 @@ export default class Fretes extends Component {
     if (this.state.cidadeDestino.value)
       body.cidadedestino = this.state.cidadeDestino.value;
 
-    let URL = BASE + "/api/fretes/veiculos";
+    let URL = "/api/fretes/veiculos";
     if (stringify(body) !== "") URL += `?${stringify(body)}`;
     //console.log(URL);
 
