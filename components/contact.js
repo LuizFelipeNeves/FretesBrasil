@@ -2,10 +2,6 @@ import React, { Component} from 'react'
 import axios from 'axios'
 import Select from "react-select"; // https://react-select.com
 
-import { stringify } from "query-string";
-
-const BASE = 'https://fretesbrasil.herokuapp.com'
-
 const customStyles = {
   control: base => ({
     ...base,
@@ -38,8 +34,17 @@ export default class Contact extends Component {
 
     enviarform(evt) {
         evt.preventDefault();
-        console.log(this.state); // enviar para api ou email
-        clearContato();
+        const body = {
+            nome: this.state.Nome,
+            sobrenome: this.state.Sobrenome,
+            email: this.state.Email,
+            telefone: this.state.Telefone,
+            assunto: this.state.Assunto.value,
+            mensagem: this.state.Mensagem,
+        }
+        axios.post('/api/contact', body)
+          .then(() => this.clearContato())
+          .catch((error) => console.log(error));
     };
 
     clearContato() {
@@ -122,6 +127,7 @@ export default class Contact extends Component {
                         <div className="form-group col-sm-12">
                             <label id="selectAssunto" required htmlFor="selectAssunto">Assunto</label>
                             <Select
+                                instanceId='"selectAssunto'
                                 placeholder='Selecione...'
                                 value={Assunto}
                                 onChange={this.onChangeAssunto}
