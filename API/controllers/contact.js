@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const contact = require('../models/Contact');
 
-require('dotenv').load();
+require('dotenv').config();
 
 // BDCONFIG= URL
 

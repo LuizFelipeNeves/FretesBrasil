@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const Frete = require('../models/Frete');
 
-require('dotenv').load();
+require('dotenv').config();
 
 // BDCONFIG= URL
 
