@@ -8,7 +8,11 @@ mongoose.set('useFindAndModify', false);
 
 const UserSchema = new mongoose.Schema({
   _id: Number,
-  name: {
+  first_name: {
+    type: String,
+    require: true,
+  },
+  last_name: {
     type: String,
     require: true,
   },
