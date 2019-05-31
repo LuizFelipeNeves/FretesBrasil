@@ -102,6 +102,7 @@ export default class Contact extends Component {
         { value: 'Outros', label: 'Outros' }
       ];
 
+    // TODO: Checkbox novidades por email
     return (
         <div className="container" id="contato">
         <div className="row">
