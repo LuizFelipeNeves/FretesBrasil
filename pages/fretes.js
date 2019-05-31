@@ -1,8 +1,8 @@
-import React, { Component} from 'react'
-import axios from 'axios'
+import React, { Component } from "react";
+import axios from "axios";
 
-import Link from 'next/link'
-import Error from 'next/error';
+import Link from "next/link";
+import Error from "next/error";
 
 import Pagination from "react-pagination-library";
 import "react-pagination-library/build/css/index.css"; //for css
@@ -11,15 +11,15 @@ import Select from "react-select"; // https://react-select.com
 
 import { stringify } from "query-string";
 
-import Layout from '../components/layout'
-import FretesList from '../components/fretesList'
+import Layout from "../components/layout";
+import FretesList from "../components/fretesList";
 
 const customStyles = {
   control: base => ({
     ...base,
     height: 45,
     minHeight: 45,
-    width: 190,
+    width: 190
   })
 };
 
@@ -52,18 +52,24 @@ export default class Fretes extends Component {
   };
 
   changeCurrentPage = page => {
-      const body = { page }
-      if (this.state.veiculo) body.veiculo = this.state.veiculo;
-      if (this.state.estadoOrigem.value) body.estadoorigem = this.state.estadoOrigem.value;
-      if (this.state.cidadeOrigem.value) body.cidadeorigem = this.state.cidadeOrigem.value;
-      if (this.state.estadoDestino.value) body.estadodestino = this.state.estadoDestino.value;
-      if (this.state.cidadeDestino.value) body.cidadedestino = this.state.cidadeDestino.value;
-      axios.post('/api/fretes/filtro/', body).then(resp => this.setState({
+    const body = { page };
+    if (this.state.veiculo) body.veiculo = this.state.veiculo;
+    if (this.state.estadoOrigem.value)
+      body.estadoorigem = this.state.estadoOrigem.value;
+    if (this.state.cidadeOrigem.value)
+      body.cidadeorigem = this.state.cidadeOrigem.value;
+    if (this.state.estadoDestino.value)
+      body.estadodestino = this.state.estadoDestino.value;
+    if (this.state.cidadeDestino.value)
+      body.cidadedestino = this.state.cidadeDestino.value;
+    axios.post("/api/fretes/filtro/", body).then(resp =>
+      this.setState({
         currentPage: page,
         data: resp.data,
         totalPages: Math.ceil(resp.data.maxitens / 20)
-      }));
-  }
+      })
+    );
+  };
 
   toggleEstadoO = estado => {
     if (this.state.estadoOrigem !== estado) {
@@ -71,7 +77,7 @@ export default class Fretes extends Component {
         {
           estadoOrigem: estado,
           cidadeOrigem: false,
-          currentPage: 1,
+          currentPage: 1
         },
         this.EOrigem
       );
@@ -84,7 +90,7 @@ export default class Fretes extends Component {
         {
           estadoDestino: estado,
           cidadeDestino: false,
-          currentPage: 1,
+          currentPage: 1
         },
         this.EDestino
       );
@@ -285,15 +291,13 @@ export default class Fretes extends Component {
   }
 
   componentDidMount() {
-    this.changeCurrentPage(1)
+    this.changeCurrentPage(1);
     this.fetchEstadosO();
     this.fetchEstadosD();
     this.fetchVeiculos();
   }
 
-  
-
-  render () {
+  render() {
     const {
       veiculo,
       veiculos,
@@ -306,9 +310,9 @@ export default class Fretes extends Component {
       estadoDestino,
       cidadeDestino,
       cidadeODisable,
-      cidadeDDisable,
+      cidadeDDisable
     } = this.state;
-    
+
     if (!estadosO[0] || !estadosD[0]) {
       return <div>Carregando...</div>;
     }
@@ -316,121 +320,132 @@ export default class Fretes extends Component {
     return (
       <Layout>
         <div className="container ">
-        <div className="col-12 mb-12 my-3 mt-4">
+          <div className="col-12 mb-12 my-3 mt-4">
             <h5>Encontre as melhores ofertas de Fretes</h5>
             <div className="form-row">
-                <div className="form-group-responsive sm-3 mr-2 mt-3">
-                  <Select
-                    className="basic-single"
-                    placeholder="Estado de Origem"
-                    value={estadoOrigem}
-                    onChange={this.toggleEstadoO}
-                    name="estadoOrigem"
-                    isSearchable={true}
-                    options={[{ label: "Todos", value: false }, ...estadosO]}
-                    styles={customStyles}
-                  />
-                </div>
-                <div className="form-group sm-3 mr-5 mt-3">
-                    <Select
-                    className="basic-single"
-                    placeholder="Cidade de Origem"
-                    onChange={this.toggleCidadeO}
-                    value={cidadeOrigem}
-                    name="cidadeOrigem"
-                    isDisabled={cidadeODisable}
-                    isSearchable={true}
-                    options={[{ label: "Todos", value: false }, ...cidadesO]}
-                    styles={customStyles}
-                  />
-                </div>
-                <div className="form-group sm-3 mr-2 mt-3">
-                    <Select
-                      className="basic-single"
-                      placeholder="Estado de Destino"
-                      onChange={this.toggleEstadoD}
-                      value={estadoDestino}
-                      name="estadoDestino"
-                      isSearchable={true}
-                      options={[{ label: "Todos", value: false }, ...estadosD]}
-                      styles={customStyles}
-                    />
-                </div>
-                <div className="form-group sm-3 mr-5 mt-3">
-                    <Select
-                    className="basic-single"
-                    placeholder="Cidade de Destino"
-                    onChange={this.toggleCidadeD}
-                    value={cidadeDestino}
-                    name="cidadeDestino"
-                    isDisabled={cidadeDDisable}
-                    isSearchable={true}
-                    options={[{ label: "Todos", value: false }, ...cidadesD]}
-                    styles={customStyles}
-                  />
-                </div>
+              <div className="form-group-responsive sm-3 mr-2 mt-3">
+                <Select
+                  className="basic-single"
+                  placeholder="Estado de Origem"
+                  value={estadoOrigem}
+                  onChange={this.toggleEstadoO}
+                  name="estadoOrigem"
+                  isSearchable={true}
+                  options={[{ label: "Todos", value: false }, ...estadosO]}
+                  styles={customStyles}
+                />
+              </div>
+              <div className="form-group sm-3 mr-5 mt-3">
+                <Select
+                  className="basic-single"
+                  placeholder="Cidade de Origem"
+                  onChange={this.toggleCidadeO}
+                  value={cidadeOrigem}
+                  name="cidadeOrigem"
+                  isDisabled={cidadeODisable}
+                  isSearchable={true}
+                  options={[{ label: "Todos", value: false }, ...cidadesO]}
+                  styles={customStyles}
+                />
+              </div>
+              <div className="form-group sm-3 mr-2 mt-3">
+                <Select
+                  className="basic-single"
+                  placeholder="Estado de Destino"
+                  onChange={this.toggleEstadoD}
+                  value={estadoDestino}
+                  name="estadoDestino"
+                  isSearchable={true}
+                  options={[{ label: "Todos", value: false }, ...estadosD]}
+                  styles={customStyles}
+                />
+              </div>
+              <div className="form-group sm-3 mr-5 mt-3">
+                <Select
+                  className="basic-single"
+                  placeholder="Cidade de Destino"
+                  onChange={this.toggleCidadeD}
+                  value={cidadeDestino}
+                  name="cidadeDestino"
+                  isDisabled={cidadeDDisable}
+                  isSearchable={true}
+                  options={[{ label: "Todos", value: false }, ...cidadesD]}
+                  styles={customStyles}
+                />
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-      <div className="container-fluid mb-3 ">
-        <form>
+        <div className="container-fluid mb-3 ">
+          <form>
             <div className="form-row">
-                <div className="container-3">
-                    <div className="col">
-                        <ul className="list-group">
-                        {veiculo ? (<li style={{ color: "red" }} key={veiculo} className='list-group-item d-flex justify-content-between align-items-center'>
-                            <a onClick={() => this.toggleVeiculo(false)}>{veiculo}</a>{" "}
-                          </li>) : ("")}
-                        
+              <div className="container-3">
+                <div className="col">
+                  <ul className="list-group">
+                    {veiculo ? (
+                      <li
+                        style={{ color: "red" }}
+                        key={veiculo}
+                        className="list-group-item d-flex justify-content-between align-items-center"
+                      >
+                        <a onClick={() => this.toggleVeiculo(false)}>
+                          {veiculo}
+                        </a>{" "}
+                      </li>
+                    ) : (
+                      ""
+                    )}
 
-                        <li key="Total" className='list-group-item d-flex justify-content-between align-items-center'>
-                          <a onClick={() => this.toggleVeiculo(false)}>Total</a>{" "}
-                          {/*veiculototal*/}
-                        </li>
+                    <li
+                      key="Total"
+                      className="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      <a onClick={() => this.toggleVeiculo(false)}>Total</a>{" "}
+                      {/*veiculototal*/}
+                    </li>
 
-                          {veiculos.map(veic => {
-                            if (veiculo !== veic.nome)
-                              return (
-                                <li
-                                  //style={veiculo === veic.nome ? { color: "red" } : {}}
-                                  //className={veiculo === veic.nome ? "active" : ""}
-                                  className='list-group-item d-flex justify-content-between align-items-center'
-                                  key={veic.nome}
-                                >
-                                  <a onClick={() => this.toggleVeiculo(veic.nome)}>
-                                    {veic.nome} - <span className="badge  badge-pill badge-secondary">{veic.total}</span>
-                                  </a>
-                                </li>
-                              );
-                            return null;
-                          })}
-                        </ul>
-                    </div>
+                    {veiculos.map(veic => {
+                      if (veiculo !== veic.nome)
+                        return (
+                          <li
+                            //style={veiculo === veic.nome ? { color: "red" } : {}}
+                            //className={veiculo === veic.nome ? "active" : ""}
+                            className="list-group-item d-flex justify-content-between align-items-center"
+                            key={veic.nome}
+                          >
+                            <a onClick={() => this.toggleVeiculo(veic.nome)}>
+                              {veic.nome} -{" "}
+                              <span className="badge  badge-pill badge-secondary">
+                                {veic.total}
+                              </span>
+                            </a>
+                          </li>
+                        );
+                      return null;
+                    })}
+                  </ul>
                 </div>
+              </div>
 
-                <div className="col ml-5">
-                   <FretesList data={this.state.data.data}/>
-                    <Pagination
-                      currentPage={this.state.currentPage}
-                      totalPages={this.state.totalPages}
-                      changeCurrentPage={this.changeCurrentPage}
-                      theme="bottom-border"
-                    />
+              <div className="col ml-5">
+                <FretesList data={this.state.data.data} />
+                <Pagination
+                  currentPage={this.state.currentPage}
+                  totalPages={this.state.totalPages}
+                  changeCurrentPage={this.changeCurrentPage}
+                  theme="bottom-border"
+                />
 
-                    {
-                      /*
+                {/*
                       <Link href='/a' as='/b'><a>b</a></Link>
                       <Link href={{ pathname: '/fretes', query: { id: '2' } }} as='/fretes/2'><a>post #2</a></Link>
 
-                      */
-                    }
-                    
-
-                </div>
+                      */}
+              </div>
             </div>
-        </form>
-    </div>
+          </form>
+        </div>
       </Layout>
-    )
+    );
   }
 }
