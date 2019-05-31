@@ -7,7 +7,6 @@ const contactRouter = require('./routes/contactRouter');
 const api = express();
 
 // You may add api specific middlewares here
-// TODO: move all controllers in the src/api/controllers folder
 
 api.use('/fretes', fretesRouter);
 api.use('/auth', authRouter);

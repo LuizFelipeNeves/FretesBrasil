@@ -1,6 +1,17 @@
 import React, { Component} from 'react'
 import axios from 'axios'
 import Select from "react-select"; // https://react-select.com
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure({
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    });
 
 const customStyles = {
   control: base => ({
@@ -43,8 +54,8 @@ export default class Contact extends Component {
             mensagem: this.state.Mensagem,
         }
         axios.post('/api/contact', body)
-          .then(() => this.clearContato())
-          .catch((error) => console.log(error));
+          .then(() => toast.success('Mensagem Enviada !', this.clearContato()))
+          .catch((error) => toast.error(error));
     };
 
     clearContato() {

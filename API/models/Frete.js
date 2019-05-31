@@ -6,10 +6,7 @@ mongoose.set('useFindAndModify', false);
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const FreteSchema = new mongoose.Schema({
-  _id: {
-    type: Number,
-    unique: true,
-  },
+  _id: Number,
   url: {
     type: String,
     unique: true,
