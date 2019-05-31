@@ -22,6 +22,7 @@ export default class Header extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+  // TODO: Menu dinamico, recuperar informações de sessão..
   render() {
     return (
         <Navbar color="dark" dark expand="lg">
@@ -43,7 +44,7 @@ export default class Header extends React.Component {
                 <NavLink href="/#contato">Contato</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink disabled href="/login">Login</NavLink>
+                <NavLink href="/login">Login</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
