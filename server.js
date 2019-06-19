@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable no-nested-ternary */
-// const cors = require('cors');
+const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const next = require("next");
@@ -15,7 +15,11 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
-  // server.use(cors());
+  server.use(
+    cors({
+      origin: "https://fretesbrasil.herokuapp.com"
+    })
+  );
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
   server.use((error, req, res, next) => {
