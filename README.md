@@ -35,5 +35,7 @@ Or deploy it to the cloud with [now](https://zeit.co/now) ([download](https://ze
 ```bash
 now
 ```
-
+## Screens
+![Main](./images/main.png)
+![Fretes](./images/Fretes.png)
 
