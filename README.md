@@ -8,8 +8,8 @@ node, npm
 ### Download
 download to your liking or using `git`:
 ```
-git clone https://github.com/LuizFelipeNeves/custom-server-express2.git
-cd custom-server-express2
+git clone https://github.com/LuizFelipeNeves/FretesBrasil.git
+cd FretesBrasil
 ```
 ### Installation
 ```
